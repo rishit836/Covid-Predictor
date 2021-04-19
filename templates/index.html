@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+          <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+    <style>
+
+label {
+  font-family: beon;
+  font-size: 35px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+button{
+padding-top: 15px;
+margin-top: 40px;
+margin-bottom: 50px;
+
+}
+select{
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 10px;;
+  padding-bottom: 10px;
+  font-size: 25px;
+  transition: all  1.2s;
+}
+
+select:hover{
+  padding-top: 17px;
+  padding-bottom: 17px;
+
+  transition: all  1.2s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+a{
+  text-align: center;
+  font-size: 19px;
+  font-family: beon;
+  color:white;
+  text-decoration: none;
+  background-color: #0066ff;#0066ff
+}
+a:hover{
+  background-color: #003d99;
+}
+a:link{
+  background-color: #0066ff;
+}
+a:active{
+
+  color:yellow;
+}
+
+
+@font-face {
+  font-family: beon;
+  src: url(../static/css/beon-webfont.woff);
+}
+
+
+
+    </style>
+
+    <title>Covid Prediction</title>
+</head>
+<body>
+<div class="p-3 mb-2 bg-info text-dark">
+    <h1 class="display-4" align="center">Covid Prediction</h1>
+    <div id="emailHelp" class="form-text">
+      <a href="#result" ><center>see the result</center></a>
+    </div>
+</div>
+<!--Main Body-->
+<div class="p-3 mb-2 bg-light text-dark">
+    <form action="/" method="POST">
+        <!--        Fever-->
+        <div class="Fever">
+          <center>
+            <label for="Fever">Fever?</label><br>
+            <select id="Fever" name="Fever">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+          </center>
+        </div>
+
+        <!--        Cough-->
+        <div class="Cough">
+          <center>
+            <label for="Cough">Cough?</label><br>
+            <center>
+            <select id="Cough" name="Cough">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+          </center>
+        </div>
+        <!-- Sore Throat -->
+        <div class="Sore Throat" >
+          <center>
+            <label for="Sore Throat">Sore Throat?</label><br>
+            <center>
+            <select id="Sore Throat" name="Sore_Throat">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+          </center>
+        </div>
+
+
+        <!-- Shorteness of breath? -->
+        <div class="Shorteness of breath" >
+          <center>
+            <label for="Shorteness of breath">Shorteness of breath?</label><br>
+            <center>
+            <select id="Shorteness of breath" name="Shorteness_of_breath">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+          </center>
+        </div>
+
+        <!-- Head Ache? -->
+        <div class="Head Ache" >
+          <center>
+            <label for="Head Ache">Head Ache?</label><br>
+            <center>
+            <select id="Head Ache" name="Head_Ache">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+          </center>
+        </div>
+        <!-- age? -->
+        <div class="age" >
+          <center>
+            <label for="age">Are you above 60 or 60?</label><br>
+            <center>
+            <select id="age" name="age">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+          </center>
+        </div>
+
+        <!-- gender? -->
+        <div class="gender" >
+          <center>
+            <label for="gender">Gender</label><br>
+            <center>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+          </center>
+        </div>
+        <!-- Test_indication? -->
+        <div class="Test_indication" >
+          <center>
+            <label for="Test_indication">why are you taking the test?</label><br>
+            <center>
+            <select id="Test_indication" name="Test_indication">
+                <option value="1">Came in contact with corona postive</option>
+                <option value="0">Came from abroad</option>
+                <option value="2">Other</option>
+
+            </select>
+          </center>
+        </div>
+
+
+
+<center>
+        <button type="submit" class="btn btn-outline-success">Submit</button>
+      </center>
+    </form>
+
+<div id="result">
+
+</div>
+    {%if (pred > 50 ) %}
+    <div class="p-3 mb-2 bg-danger text-white">
+      <p align="center">
+      <h5 align="center">Your Possibilty of being corona postive is {{pred}}% (RISK)</h5>
+      </p>
+    </div>
+
+    {% elif(pred < 50 ) %}
+    <div class="p-3 mb-2 bg-success text-white">
+      <p align="center">
+      <h5 align="center">Your Possibilty of being corona postive is {{pred}}% and you are safe</h5>
+      </p>
+    </div>
+    {% elif (pred == 0) %}
+    <div class="p-3 mb-2 bg-light text-dark"><p align="center"><h5 align="center">Waiting For the data</h5></p></div>
+    {% endif %}
+</div>
+</div>
+</body>
+</html>

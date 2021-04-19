@@ -1,0 +1,10 @@
+h1 {
+  font-family: beon;
+  font-size: 40px;
+  transition: all transition 2s;
+}
+
+@font-face {
+  font-family: beon;
+  src: url(beon-webfont.woff);
+}
